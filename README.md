@@ -1,14 +1,14 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+The se_project_todo-app allows you to setup task todo with dates to be done by.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+The project allows you to add todos and delete todos
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+We did Refactoring on our project using OOP, to update the directory structure using JS modules
 
 ## Deployment
 
