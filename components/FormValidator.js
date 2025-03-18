@@ -1,15 +1,13 @@
 class FormValidator {
   constructor(settings, formEl) {
     this._inputSelector = settings.inputSelector;
-    this._formSelector = settings._formSelector;
+    this._formSelector = settings.formSelector; // Fixed typo from _formSelector
     this._submitButtonSelector = settings.submitButtonSelector;
     this._errorClass = settings.errorClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._formEl = formEl;
   }
-
-  // TODO - implment all other methods
 
   _showInputError(inputElement, errorMessage) {
     const errorElementId = `#${inputElement.id}-error`;
@@ -55,15 +53,10 @@ class FormValidator {
     this._inputList = Array.from(
       this._formEl.querySelectorAll(this._inputSelector)
     );
-
-    // (2) TODO - finish implementing _setEventListeners
-
     this._buttonElement = this._formEl.querySelector(
       this._submitButtonSelector
     );
-
     this._toggleButtonState();
-
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
@@ -72,7 +65,8 @@ class FormValidator {
     });
   }
 
-  _resetValidation() {
+  // Public method required by Task 6
+  resetValidation() {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
@@ -83,7 +77,7 @@ class FormValidator {
   enableValidation() {
     this._formEl.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._resetValidation();
+      this.resetValidation(); // Reset on submit (optional, already called in index.js)
     });
     this._setEventListeners();
   }

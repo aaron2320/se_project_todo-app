@@ -12,11 +12,14 @@ const addTodoForm = document.forms["add-todo-form"];
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
+console.log("addTodoPopup initialized:", addTodoPopup); // Log initialization
+
 const openModal = (modal) => {
   modal.classList.add("popup_visible");
 };
 
 const closeModal = (modal) => {
+  console.log("closeModal called with:", modal);
   modal.classList.remove("popup_visible");
 };
 
@@ -48,7 +51,8 @@ addTodoForm.addEventListener("submit", (evt) => {
   const id = uuidv4();
   const values = { name, date, id };
   renderTodo(values);
-  newTodoValidator.resetValidation(); // Reset form and disable submit button
+  newTodoValidator.resetValidation();
+  console.log("Submit handler reached closeModal");
   closeModal(addTodoPopup);
 });
 
