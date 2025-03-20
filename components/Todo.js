@@ -1,4 +1,3 @@
-// components/Todo.js
 class Todo {
   constructor(data, selector, handleCheckboxChange, handleDelete) {
     this._data = data;
@@ -31,7 +30,8 @@ class Todo {
   }
 
   _generateDueDateEl() {
-    if (!isNaN(this._dueDate)) {
+    console.log("Due date in Todo.js:", this._dueDate); // Debug
+    if (!isNaN(this._dueDate.getTime())) {
       this._tododate.textContent = `Due: ${this._dueDate.toLocaleString(
         "en-US",
         {
@@ -40,6 +40,8 @@ class Todo {
           day: "numeric",
         }
       )}`;
+    } else {
+      this._tododate.textContent = "Due: Not set";
     }
   }
 
@@ -48,7 +50,8 @@ class Todo {
       .querySelector(".todo")
       .cloneNode(true);
     const todoNameEl = this._todoElement.querySelector(".todo__name");
-    todoNameEl.textContent = this._data.name;
+    console.log("Setting todo name in Todo.js:", this._data.name); // Debug
+    todoNameEl.textContent = this._data.name || "Unnamed Task"; // Fallback if name is empty
 
     this._generateCheckBoxEl();
     this._generateDueDateEl();

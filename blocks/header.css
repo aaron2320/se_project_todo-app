@@ -2,6 +2,7 @@
   border-bottom: 1px solid #ddd;
   display: flex;
   padding-bottom: 12px;
+  direction: ltr; /* Ensure left-to-right direction */
 }
 
 .header__title {
@@ -25,6 +26,7 @@
   color: #181818;
   font-weight: 700;
   margin: 0;
+  direction: ltr; /* Ensure left-to-right direction */
 }
 
 .header__button {

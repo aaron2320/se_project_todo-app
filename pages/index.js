@@ -1,4 +1,3 @@
-// pages/index.js
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 import { initialTodos, validationConfig } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
@@ -45,17 +44,19 @@ const todoSection = new Section(
 
 // Popup with form for adding todos
 const addTodoPopup = new PopupWithForm("#add-todo-popup", (formData) => {
-  const date = formData.date
-    ? new Date(formData.date).setMinutes(
-        new Date(formData.date).getMinutes() + new Date().getTimezoneOffset()
-      )
-    : new Date();
+  console.log("Form data:", formData); // Debug form data
+  const date = formData.date ? new Date(formData.date) : new Date();
+  if (formData.date) {
+    // Adjust for timezone offset
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+  }
   const newTodo = {
-    name: formData.name,
-    date,
+    name: formData.name || "Unnamed Task", // Fallback if name is empty
+    date: date, // Ensure this is a Date object
     id: uuidv4(),
     completed: false,
   };
+  console.log("New todo:", newTodo); // Debug new todo object
   const todoElement = generateTodo(newTodo);
   todoSection.addItem(todoElement);
   todoCounter.updateTotal(true);
