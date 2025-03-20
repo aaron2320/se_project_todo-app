@@ -1,4 +1,3 @@
-// components/Todo.js
 class Todo {
   constructor(data, selector, handleCheckboxChange, handleDelete) {
     this._data = data;
