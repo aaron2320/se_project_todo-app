@@ -1,9 +1,7 @@
-/* blocks/page.css */
 .page {
   background-color: #f5f5f5;
   padding: 20px;
   min-height: 100vh;
-  direction: ltr; /* Ensure left-to-right direction */
 }
 
 .page__content {
@@ -15,7 +13,6 @@
   border-radius: 16px;
   box-shadow: 0px 4px 8px 0px #000000;
   padding: 20px;
-  direction: ltr; /* Ensure left-to-right direction */
 }
 
 @media screen and (max-width: 1030px) {
