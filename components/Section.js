@@ -1,3 +1,4 @@
+// components/Section.js
 class Section {
   constructor({ items, renderer, containerSelector }) {
     this._items = items;
@@ -6,13 +7,15 @@ class Section {
   }
 
   renderItems() {
+    // Render items in natural order (first item at the top)
     this._items.forEach((item) => {
-      this._renderer(item);
+      const element = this._renderer(item);
+      this._container.append(element);
     });
   }
 
   addItem(element) {
-    this._container.prepend(element);
+    this._container.prepend(element); // New items go to the top
   }
 }
 
