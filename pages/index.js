@@ -45,19 +45,24 @@ const todoSection = new Section(
 
 // Popup with form for adding todos
 const addTodoPopup = new PopupWithForm("#add-todo-popup", (formData) => {
+  console.log("Received form data in index.js:", formData); // Debug
   let date;
-  if (formData.date) {
+  if (formData.date && formData.date !== "") {
     const [year, month, day] = formData.date.split("-");
     date = new Date(year, month - 1, day); // month is 0-based in JavaScript
   } else {
     date = new Date();
   }
   const newTodo = {
-    name: formData.name || "Unnamed Task",
+    name:
+      formData.name && formData.name.trim() !== ""
+        ? formData.name
+        : "Unnamed Task",
     date: date,
     id: uuidv4(),
     completed: false,
   };
+  console.log("New todo created:", newTodo); // Debug
   const todoElement = generateTodo(newTodo);
   todoSection.addItem(todoElement);
   todoCounter.updateTotal(true);
