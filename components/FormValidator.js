@@ -1,7 +1,8 @@
+// components/FormValidator.js
 class FormValidator {
   constructor(settings, formEl) {
     this._inputSelector = settings.inputSelector;
-    this._formSelector = settings.formSelector; // Fixed typo from _formSelector
+    this._formSelector = settings.formSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._errorClass = settings.errorClass;
     this._inputErrorClass = settings.inputErrorClass;
@@ -65,19 +66,18 @@ class FormValidator {
     });
   }
 
-  // Public method required by Task 6
   resetValidation() {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
-    this._formEl.reset();
+    // Remove form reset to preserve input values when opening the popup
+    // this._formEl.reset();
     this._toggleButtonState();
   }
 
   enableValidation() {
     this._formEl.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this.resetValidation(); // Reset on submit (optional, already called in index.js)
     });
     this._setEventListeners();
   }

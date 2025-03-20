@@ -26,12 +26,13 @@ class PopupWithForm extends Popup {
       const formData = this._getInputValues();
       console.log("Submitting form data in PopupWithForm:", formData); // Debug
       this._handleFormSubmit(formData);
+      this.close(); // Close the popup after submission
     });
   }
 
   close() {
     super.close();
-    this._form.reset();
+    this._form.reset(); // Reset the form after closing
   }
 }
 

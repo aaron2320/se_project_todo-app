@@ -47,7 +47,7 @@ const todoSection = new Section(
 const addTodoPopup = new PopupWithForm("#add-todo-popup", (formData) => {
   console.log("Received form data in index.js:", formData); // Debug
   let date;
-  if (formData.date && formData.date !== "") {
+  if (formData.date && formData.date.trim() !== "") {
     const [year, month, day] = formData.date.split("-");
     date = new Date(year, month - 1, day); // month is 0-based in JavaScript
   } else {
