@@ -1,3 +1,4 @@
+// components/Todo.js
 class Todo {
   constructor(data, selector, handleCheckboxChange, handleDelete) {
     this._data = data;
@@ -51,7 +52,7 @@ class Todo {
       .cloneNode(true);
     const todoNameEl = this._todoElement.querySelector(".todo__name");
     console.log("Setting todo name in Todo.js:", this._data.name); // Debug
-    todoNameEl.textContent = this._data.name || "Unnamed Task"; // Fallback if name is empty
+    todoNameEl.textContent = this._data.name; // Directly set the name
 
     this._generateCheckBoxEl();
     this._generateDueDateEl();
