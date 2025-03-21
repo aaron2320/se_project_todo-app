@@ -66,6 +66,7 @@ const addTodoPopup = new PopupWithForm("#add-todo-popup", (formData) => {
   const todoElement = generateTodo(newTodo);
   todoSection.addItem(todoElement);
   todoCounter.updateTotal(true);
+  newTodoValidator.resetValidation(); // Reset the form and disable the button after submission
   addTodoPopup.close();
 });
 
@@ -75,8 +76,7 @@ newTodoValidator.enableValidation();
 
 // Event listeners
 addTodoButton.addEventListener("click", () => {
-  newTodoValidator.resetValidation();
-  addTodoPopup.open();
+  addTodoPopup.open(); // Open popup without resetting the form
 });
 
 // Initial render

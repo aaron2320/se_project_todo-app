@@ -32,7 +32,7 @@ class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    this._form.reset(); // Reset the form after closing
+    // Removed this._form.reset() to preserve input values on unexpected close
   }
 }
 

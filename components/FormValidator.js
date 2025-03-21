@@ -70,9 +70,8 @@ class FormValidator {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
     });
-    // Remove form reset to preserve input values when opening the popup
-    // this._formEl.reset();
-    this._toggleButtonState();
+    this._formEl.reset(); // Reset the form
+    this._toggleButtonState(); // Update button state after reset
   }
 
   enableValidation() {
